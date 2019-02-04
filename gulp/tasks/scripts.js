@@ -6,7 +6,7 @@ module.exports = function () {
 				'node_modules/bootstrap/dist/js/bootstrap.min.js'])
 			.pipe($.gp.uglifyjs('libs.min.js', {
 				outSourceMap : true 
-			}))     
+			}))
 			.pipe($.gulp.dest('build/static/js/'))
 			.pipe($.bs.reload({
 				stream: true
