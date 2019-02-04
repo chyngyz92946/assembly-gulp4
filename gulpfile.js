@@ -2,8 +2,8 @@
 
 global.$ = {
 	gulp: require('gulp'),
-	gp: require('gulp-load-plugins')(),
-	bs: require('browser-sync').create(),
+	gp:   require('gulp-load-plugins')(),
+	bs:   require('browser-sync').create(),
 
 	path: {
 		tasks: require('./gulp/config/tasks.js') 
@@ -21,5 +21,5 @@ $.gulp.task('default', $.gulp.series(
 
 $.gulp.task('build', $.gulp.series(
 	$.gulp.parallel('pug', 'sass:build', 'scripts:lib', 'scripts:build', 'img:build'),
-	$.gulp.parallel('watch', 'serve')
+	$.gulp.parallel('serve')
 ));
