@@ -10,11 +10,18 @@ module.exports = function () {
 			}));
 	});
 
-	$.gulp.task('scripts', function () {
+	$.gulp.task('scripts:dev', function () {
 		return $.gulp.src('src/static/js/main.js')
 			.pipe($.gulp.dest('build/static/js/'))
 			.pipe($.bs.reload({
 				stream: true
 			}));
+	});
+
+	$.gulp.task('scripts:build', function () {
+		return $.gulp.src('src/static/js/main.js')
+			.pipe($.gp.concat('main.min.js'))
+			.pipe($.gp.uglifyjs())
+			.pipe($.gulp.dest('build/static/js/'))
 	});
 }
