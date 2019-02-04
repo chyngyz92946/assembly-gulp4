@@ -1,6 +1,7 @@
 module.exports = function () {
 	$.gulp.task('sass:dev', function () {
 		return $.gulp.src('src/static/sass/main.scss')
+			.pipe($.gp.concat('main.min.css'))
 			.pipe($.gp.sourcemaps.init())
 			.pipe($.gp.sass())
 			.pipe($.gp.autoprefixer({
@@ -9,6 +10,7 @@ module.exports = function () {
 			.on("error", $.gp.notify.onError({
 				title: "Error style"
 			}))
+			.pipe($.gp.csso())
 			.pipe($.gp.sourcemaps.write())
 			.pipe($.gulp.dest('build/static/css/'))
 			.pipe($.bs.reload({
@@ -18,6 +20,7 @@ module.exports = function () {
 
 	$.gulp.task('sass:build', function () {
 		return $.gulp.src('src/static/sass/main.scss')
+			.pipe($.gp.concat('main.min.css'))
 			.pipe($.gp.sourcemaps.init())
 			.pipe($.gp.sass())
 			.pipe($.gp.autoprefixer({
